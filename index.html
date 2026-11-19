@@ -129,6 +129,8 @@
   .kjv{font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;line-height:1.55;color:#3d342d;background:#fbf8f3;border-radius:8px;padding:12px 14px}
   .kjv sup{font-family:"Source Sans 3",sans-serif;font-size:10.5px;font-weight:600;color:var(--accent);margin-right:3px}
   .kjv p{margin:0}
+  .kjv .ps-title{font-style:italic;color:var(--muted);margin-bottom:6px}
+  details.psalm{margin:0 0 16px}
   .kjv p + p{margin-top:10px}
   .kjv .kjv-tag{display:block;font-family:"Source Sans 3",sans-serif;font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.06em}
   .src{font-size:12.5px;color:var(--muted);margin:10px 0 0}
@@ -223,6 +225,11 @@
     <div class="eyebrow">Talk</div>
     <div class="head"><h2>The Basis of Hospitality</h2><span class="time">40 min</span></div>
     <p class="lead">Psalm 23</p>
+
+    <details class="passage psalm">
+      <summary><b>Read Psalm 23</b><span>KJV</span></summary>
+      <div class="body"><div class="kjv"><p class="ps-title">A Psalm of David.</p><p><sup>1</sup>The LORD is my shepherd; I shall not want. <sup>2</sup>He maketh me to lie down in green pastures: he leadeth me beside the still waters. <sup>3</sup>He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake. <sup>4</sup>Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me. <sup>5</sup>Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over. <sup>6</sup>Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever.</p></div></div>
+    </details>
 
     <div class="heb">
       <div class="ref">Hebrews 13:1–2</div>
@@ -521,6 +528,7 @@
         var c = el.classList;
         if (c.contains("hostbar") || c.contains("toolbar") || c.contains("export") || c.contains("assign")) return;
         if (c.contains("tip") || el.id === "assign-note") return;
+        if (c.contains("psalm")) return;
         if (el.parentElement && el.parentElement.parentElement && el.parentElement.parentElement.classList.contains("points") && (el.tagName === "B" || c.contains("ref"))) return;
         if (c.contains("eyebrow")) { need(30); y += 4; text(el.textContent.toUpperCase(), 8.5, "bold", red, 1); return; }
         if (c.contains("head")) {
