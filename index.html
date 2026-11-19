@@ -136,6 +136,8 @@
   details.jn{margin:10px 0 0}
   .kjv p + p{margin-top:10px}
   .kjv .kjv-tag{display:block;font-family:"Source Sans 3",sans-serif;font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.06em}
+  .qmini{font-size:13px;line-height:1.45;color:var(--accent);background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px}
+  .qmini b{font-weight:600}
   .src{font-size:12.5px;color:var(--muted);margin:10px 0 0}
   .verse-sub .cf{font-family:"Source Sans 3",sans-serif;font-style:normal;font-size:13px;color:var(--muted)}
   @media (max-width:640px){.layers-wrap{grid-template-columns:1fr}figure.book{order:-1}figure.book img{max-width:160px}}
@@ -313,14 +315,15 @@
     <div class="q"><b>1.</b> What do these passages teach us about hospitality?</div>
     <div class="q"><b>2.</b> How does it challenge our hesitations or inform our practice of hospitality?</div>
 
-    <h3>Summary</h3>
-    <textarea data-k="d2-sum" data-label="Discussion 2 · Summary" style="min-height:110px"></textarea>
 
     <h3>Passages</h3>
     <p class="lead" style="margin:2px 0 0"><b>Each group will be assigned one passage.</b></p>
     <p class="muted" id="assign-note" style="margin:2px 0 0">Tap a passage to open it.</p>
 
     <div id="passages"></div>
+
+    <h3 style="margin-top:28px">Summary</h3>
+    <textarea data-k="d2-sum" data-label="Discussion 2 · Summary" style="min-height:110px"></textarea>
   </section>
 
   <section class="card" id="practice">
@@ -409,6 +412,7 @@
         '<span class="assign" data-i="' + i + '" hidden></span></summary>' +
       '<div class="body">' +
         '<div class="kjv">' + kjvHtml(KJV[i]) + '<span class="kjv-tag">KJV</span></div>' +
+        '<div class="qmini"><b>1.</b> What do these passages teach us about hospitality?<br><b>2.</b> How does it challenge our hesitations or inform our practice of hospitality?</div>' +
         '<textarea data-k="bs-' + i + '" data-label="' + p[0] + '" placeholder="Your notes"></textarea>' +
       '</div>';
     host.appendChild(d);
