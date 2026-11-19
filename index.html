@@ -576,8 +576,6 @@
           var sb = el.querySelector("summary b"), hint = el.querySelector("summary span:not(.assign)"), as = el.querySelector(".assign");
           var who = as ? ((as.querySelector("input") ? as.querySelector("input").value : as.textContent) || "").trim() : "";
           need(60); text(sb.textContent + (hint ? "   " + hint.textContent : "") + (who ? "   [" + who + "]" : ""), 11, "bold", ink, 3);
-          var kj = el.querySelector(".kjv");
-          if (kj) { var kc = kj.cloneNode(true); kc.querySelectorAll("sup").forEach(function(s){ s.textContent = s.textContent + " "; }); var tg = kc.querySelector(".kjv-tag"); if (tg) tg.remove(); var ps = kc.querySelectorAll("p"); ps.forEach(function(pp, j){ text(pp.textContent + (j === ps.length - 1 ? " (KJV)" : ""), 10, "serifi", ink, j === ps.length - 1 ? 5 : 3, 8); }); }
           answer(el.querySelector("textarea"), 0, 40); return;
         }
         if (c.contains("grid3")) {
