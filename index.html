@@ -371,7 +371,7 @@
     <div class="head"><h2>For further reading</h2></div>
     <div class="books">
       <figure><img alt="Cover of The Lord of Psalm 23 by David Gibson" src="books/gibson.jpg"><figcaption><em>The Lord of Psalm 23</em><span>David Gibson</span><a class="series" href="https://www.youtube.com/playlist?list=PLcSzccNLkXgmzgrrz5lIypxf9oQzI5sIO" target="_blank" rel="noopener">▶ Listen to the sermon series</a></figcaption></figure>
-      <figure><img alt="Cover of The Gospel Comes with a House Key by Rosaria Butterfield" src="books/butterfield.jpg"><figcaption><em>The Gospel Comes with a House Key</em><span>Rosaria Butterfield</span></figcaption></figure>
+      <figure><img alt="Cover of The Gospel Comes with a House Key by Rosaria Butterfield" src="books/butterfield.jpg"><figcaption><em>The Gospel Comes with a House Key</em><span>Rosaria Butterfield</span><a class="series" href="https://www.youtube.com/watch?v=V3WVdMx9gCE" target="_blank" rel="noopener">▶ Watch her talk</a></figcaption></figure>
       <figure><img alt="Cover of Making Room: Recovering Hospitality as a Christian Tradition by Christine D. Pohl" src="books/pohl.jpg"><figcaption><em>Making Room: Recovering Hospitality as a Christian Tradition</em><span>Christine D. Pohl</span><span>25th anniversary edition</span></figcaption></figure>
     </div>
   </section>
@@ -581,7 +581,7 @@
         if (el.querySelector && el.querySelector(".video-link")) return;
         if (c.contains("embed")) { text("Video: https://www.youtube.com/watch?v=nihZckj9N60", 9.5, "normal", grey, 6); return; }
         if (c.contains("video")) { text("Video: " + el.getAttribute("href"), 9.5, "normal", grey, 6); return; }
-        if (c.contains("books")) { el.querySelectorAll("figcaption").forEach(function(fc){ var t = fc.querySelector("em"), sp = fc.querySelectorAll("span"), a = sp[0], ed = sp[1]; text("•  " + (a ? a.textContent + ", " : "") + (t ? t.textContent : fc.textContent) + (ed ? " (" + ed.textContent + ")" : ""), 11, "normal", ink, 2, 6); var ln = fc.querySelector("a.series"); if (ln) text("Sermon series: " + ln.getAttribute("href"), 9, "normal", grey, 3, 18); }); y += 4; return; }
+        if (c.contains("books")) { el.querySelectorAll("figcaption").forEach(function(fc){ var t = fc.querySelector("em"), sp = fc.querySelectorAll("span"), a = sp[0], ed = sp[1]; text("•  " + (a ? a.textContent + ", " : "") + (t ? t.textContent : fc.textContent) + (ed ? " (" + ed.textContent + ")" : ""), 11, "normal", ink, 2, 6); var ln = fc.querySelector("a.series"); if (ln) text(ln.textContent.replace("▶", "").trim() + ": " + ln.getAttribute("href"), 9, "normal", grey, 3, 18); }); y += 4; return; }
         if (el.tagName === "UL") {
           el.querySelectorAll("li").forEach(function(li){ text("•  " + li.textContent, 11, "normal", ink, 2, 6); });
           y += 4; return;
