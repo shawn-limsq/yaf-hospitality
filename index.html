@@ -481,8 +481,29 @@
       badge.textContent = "\u{1F4AC} " + list.length;
     });
   }
+  // Alternative to "Publish to web": read the sheet by link (sheet shared as "Anyone with the link: Viewer")
+  var SHEET_ID = "1tfLGokvg-0WJvlHNMTbtCJGA4IMn4cY9FUTUtDbi7jw", SHEET_GID = "1041291557";
+  var gvizN = 0;
+  function loadViaGviz(){
+    var cb = "__yafRefl" + (++gvizN);
+    var s = document.createElement("script");
+    var done = function(){ try { delete window[cb]; } catch(e) { window[cb] = undefined; } if (s.parentNode) s.parentNode.removeChild(s); };
+    window[cb] = function(res){
+      try {
+        var t = res && res.table; if (!t) return;
+        var head = t.cols.map(function(c){ return c.label || ""; });
+        var rows = [head].concat((t.rows || []).map(function(r){ return (r.c || []).map(function(c){ return c ? (c.f != null ? c.f : (c.v != null ? String(c.v) : "")) : ""; }); }));
+        renderReflections(rows);
+      } finally { done(); }
+    };
+    s.onerror = done;
+    s.src = "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/gviz/tq?gid=" + SHEET_GID + "&headers=1&tqx=responseHandler:" + cb + "&t=" + Date.now();
+    document.head.appendChild(s);
+    setTimeout(done, 15000);
+  }
   function loadReflections(){
-    if (!REFLECTIONS_CSV || !window.fetch) return;
+    if (!REFLECTIONS_CSV) { if (SHEET_ID) loadViaGviz(); return; }
+    if (!window.fetch) return;
     fetch(REFLECTIONS_CSV + (REFLECTIONS_CSV.indexOf("?") > -1 ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" })
       .then(function(r){ return r.ok ? r.text() : ""; })
       .then(function(t){ if (t) renderReflections(parseCSV(t)); })
